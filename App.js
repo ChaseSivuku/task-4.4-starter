@@ -81,7 +81,9 @@ function updateList(){
 
         checkBox.addEventListener("change", () => {
             if(checkBox.checked){
-            checkLabel.style.textDecoration = "line-through";
+                checkLabel.style.textDecoration = "line-through";
+                tasks[i].isDone = true;
+                console.log(tasks[i].name + " status is done status: " + tasks[i].isDone);
             }
             else{
                 checkLabel.style.textDecoration = "none";
@@ -92,7 +94,7 @@ function updateList(){
         delButton.textContent = "Del";
         delButton.addEventListener("click", () =>{
             console.log(tasks[i].name + " was deleted");
-            tasks.splice(i,1);
+            //tasks.splice(i,1);
             listItem.innerHTML = "";
         }); 
         
@@ -124,6 +126,7 @@ submitButton.addEventListener("click", (event) => {
 
     if(inputBar.value === ""){
         alert("Enter a task");
+        return;
     }else{
         const input = inputBar.value.trim();
         addTask(input);
@@ -160,6 +163,30 @@ root.style.boxSizing = "border-box";
 heading.style.textAlign = "center";
 heading.style.marginBottom = "20px";
 heading.style.color = "#ffffff";
+
+inputDiv.style.backgroundColor = "#2c2c2c";
+inputDiv.style.padding = "20px";
+inputDiv.style.borderRadius = "8px";
+inputDiv.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.4)";
+inputDiv.style.marginBottom = "20px";
+
+inputLabel.style.display = "block";
+inputLabel.style.marginBottom = "8px";
+
+inputBar.style.width = "100%";
+inputBar.style.padding = "10px";
+inputBar.style.border = "none";
+inputBar.style.borderRadius = "5px";
+inputBar.style.marginBottom = "10px";
+inputBar.style.boxSizing = "border-box";
+
+submitButton.style.backgroundColor = "#4caf50";
+submitButton.style.color = "white";
+submitButton.style.padding = "10px 20px";
+submitButton.style.border = "none";
+submitButton.style.borderRadius = "5px";
+submitButton.style.cursor = "pointer";
+submitButton.style.fontWeight = "bold";
 
 
 });

@@ -17,7 +17,7 @@ const inputForm = document.createElement("form");
 
 const inputLabel = document.createElement("label");
 inputLabel.for = "task-input";
-inputLabel.textContent = "Enter Task to add: ";
+inputLabel.textContent = "Enter Task to add: " + "\t\t";
 
 
 const inputBar = document.createElement("input");
@@ -124,7 +124,7 @@ function deleteTask(title){
 submitButton.addEventListener("click", (event) => {
     event.preventDefault();
 
-    if(inputBar.value === ""){
+    if(inputBar.value == ""){
         alert("Enter a task");
         return;
     }else{
@@ -135,7 +135,7 @@ submitButton.addEventListener("click", (event) => {
 
     //console.log(tasks[0].name);
 
-    inputBar.value = " ";
+    inputBar.value = "";
 });
 
 //styles
@@ -188,5 +188,50 @@ submitButton.style.borderRadius = "5px";
 submitButton.style.cursor = "pointer";
 submitButton.style.fontWeight = "bold";
 
+listDiv.style.backgroundColor = "#2c2c2c";
+listDiv.style.padding = "20px";
+listDiv.style.borderRadius = "8px";
+listDiv.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.4)";
+
+const styleListItems = () => {
+    const items = document.querySelectorAll("li");
+    items.forEach(li => {
+        li.style.display = "flex";
+        li.style.alignItems = "center";
+        li.style.justifyContent = "space-between";
+        li.style.backgroundColor = "#3b3b3b";
+        li.style.marginBottom = "10px";
+        li.style.padding = "10px 15px";
+        li.style.borderRadius = "5px";
+    });
+
+    const labels = document.querySelectorAll("label");
+    labels.forEach(label => {
+        label.style.flex = "1";
+        label.style.marginLeft = "10px";
+    });
+
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+    checkboxes.forEach(cb => {
+        cb.style.transform = "scale(1.2)";
+    });
+
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach(btn => {
+        btn.style.backgroundColor = "#e53935";
+        btn.style.color = "white";
+        btn.style.border = "none";
+        btn.style.borderRadius = "5px";
+        btn.style.padding = "6px 12px";
+        btn.style.cursor = "pointer";
+        btn.style.marginLeft = "10px";
+    });
+};
+
+const originalUpdateList = updateList;
+updateList = function() {
+    originalUpdateList();
+    styleListItems();
+};
 
 });
